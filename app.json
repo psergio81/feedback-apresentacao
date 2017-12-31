@@ -1,0 +1,5 @@
+{
+  "name": "API votação de apresentações",
+  "description": "Este projeto de estudos tem como objetivo publicar uma API para avaliação de apresentações.",
+  "addons": [ "heroku-postgresql" ]
+}

@@ -1,0 +1,1 @@
+web: java -jar target/feedback-apresentacao-1.0.jar
