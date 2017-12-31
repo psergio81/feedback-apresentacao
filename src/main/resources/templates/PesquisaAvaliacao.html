@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="LayoutPadrao">
+<head>
+<title>Avaliação Apresentações</title>
+</head>
+
+<section layout:fragment="conteudo">
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<div class="clearfix">
+				<h1 class="panel-title aw-titulo-panel">Avaliação Apresentações</h1>
+				<a class="btn btn-link aw-link-panel" href="/avaliacoes/nova">Nova
+					Apresentação</a>
+			</div>
+		</div>
+
+		<div class="panel-body">
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th class="text-center col-md-1">#</th>
+						<th>Título</th>
+						<th class="col-md-3
+						
+						d
+						">Descrição</th>
+						<th class="col-md-2">Talker</th>
+						<th class="col-md-1">Votos</th>
+						<th class="col-md-1">Pontos</th>
+						<th class="col-md-1"></th>
+					</tr>
+				</thead>
+				<tbody>
+
+					<tr th:if="${#lists.isEmpty(todosTitulos)}">
+						<td colspan="7">Nenhuma Apresentação encontrada</td>
+					</tr>
+
+				</tbody>
+
+			</table>
+		</div>
+	</div>
+</section>
+
+</html>

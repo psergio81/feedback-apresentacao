@@ -23,15 +23,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @SpringBootApplication
+@RequestMapping("/avaliacoes")
 public class Main {
 
   public static void main(String[] args) throws Exception {
     SpringApplication.run(Main.class, args);
   }
 
-  @RequestMapping("/")
-  String index() {
-    return "index";
+  @RequestMapping()
+  public String pesquisa() {
+    return "PesquisaAvaliacao";
+  }
+  
+  @RequestMapping("/nova")
+  public String nova() {
+	  return "CadastroAvaliacao";
   }
 
 }
