@@ -1,16 +1,9 @@
 package br.com.stdio.feedback.model;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Apresentacao {
@@ -21,10 +14,7 @@ public class Apresentacao {
 
 	private String titulo;
 	private String descricao;
-
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "apresentador_id")
-	private List<Apresentador> apresentadores = new ArrayList<>();
+	private String apresentador;
 
 	public Long getId() {
 		return id;
@@ -50,11 +40,12 @@ public class Apresentacao {
 		this.descricao = descricao;
 	}
 
-	public List<Apresentador> getApresentadores() {
-		return Collections.unmodifiableList(apresentadores);
+	public String getApresentador() {
+		return apresentador;
 	}
 
-	public void addApresentador(Apresentador apresentador) {
-		this.apresentadores.add(apresentador);
+	public void setApresentador(String apresentador) {
+		this.apresentador = apresentador;
 	}
+
 }
