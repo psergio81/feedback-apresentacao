@@ -1,5 +1,6 @@
 package br.com.stdio.feedback.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +14,8 @@ public class Apresentacao {
 	private Long id;
 
 	private String titulo;
+
+	@Column(length = 500)
 	private String descricao;
 	private String apresentador;
 
