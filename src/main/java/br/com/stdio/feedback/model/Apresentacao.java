@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity
 public class Apresentacao {
@@ -19,6 +20,9 @@ public class Apresentacao {
 	private String descricao;
 	private String apresentador;
 
+	@Transient
+	private Long totalVotos;
+	
 	public Long getId() {
 		return id;
 	}
@@ -50,5 +54,15 @@ public class Apresentacao {
 	public void setApresentador(String apresentador) {
 		this.apresentador = apresentador;
 	}
+
+	public Long getTotalVotos() {
+		return totalVotos;
+	}
+	
+	public void setTotalVotos(Long totalVotos) {
+		this.totalVotos = totalVotos;
+	}
+
+	
 
 }

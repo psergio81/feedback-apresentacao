@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.stdio.feedback.model.Apresentacao;
-import br.com.stdio.feedback.repository.ApresentacaoRepository;
 import br.com.stdio.feedback.service.ApresentacaoService;
 
 @RestController
@@ -17,13 +16,11 @@ import br.com.stdio.feedback.service.ApresentacaoService;
 public class ApresentacaoController {
 
 	private ApresentacaoService apresentacaoService;
-	private ApresentacaoRepository apresentacaoRepository;
 
 	@Autowired
-	public ApresentacaoController(ApresentacaoService apresentacaoService, ApresentacaoRepository apresentacaoRepository) {
+	public ApresentacaoController(ApresentacaoService apresentacaoService) {
 		super();
 		this.apresentacaoService = apresentacaoService;
-		this.apresentacaoRepository = apresentacaoRepository;
 	}
 
 	@RequestMapping("/nova-apresentacao")
@@ -36,7 +33,7 @@ public class ApresentacaoController {
 
 	@RequestMapping(path = "", method = RequestMethod.GET)
 	public Iterable<Apresentacao> findAll() {
-		return apresentacaoRepository.findAll();
+		return  apresentacaoService.findAll();
 	}
 
 }
