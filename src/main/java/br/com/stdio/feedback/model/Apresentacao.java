@@ -2,6 +2,8 @@ package br.com.stdio.feedback.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -19,6 +21,9 @@ public class Apresentacao {
 	@Column(length = 500)
 	private String descricao;
 	private String apresentador;
+	
+	@Enumerated(EnumType.STRING)
+	private StatusApresentacao status;
 
 	@Transient
 	private Long totalVotos;
@@ -61,6 +66,14 @@ public class Apresentacao {
 	
 	public void setTotalVotos(Long totalVotos) {
 		this.totalVotos = totalVotos;
+	}
+
+	public StatusApresentacao getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusApresentacao status) {
+		this.status = status;
 	}
 
 	

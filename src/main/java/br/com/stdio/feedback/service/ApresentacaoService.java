@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import br.com.stdio.feedback.model.Apresentacao;
+import br.com.stdio.feedback.model.StatusApresentacao;
 import br.com.stdio.feedback.model.Voto;
 import br.com.stdio.feedback.repository.ApresentacaoRepository;
 
@@ -26,13 +27,39 @@ public class ApresentacaoService {
 
 
 		for (Apresentacao apresentacao : todasApresentacoes) {
-
-			Iterable<Voto> votos = votoService.findByCodigoApresentacao(apresentacao.getId());
-			
-			apresentacao.setTotalVotos(votos.spliterator().estimateSize());
+			setVotosDaApresentacao(apresentacao);
 		}
 
 		return todasApresentacoes;
+	}
+
+	private void setVotosDaApresentacao(Apresentacao apresentacao) {
+		Iterable<Voto> votos = votoService.findByCodigoApresentacao(apresentacao.getId());
+		
+		apresentacao.setTotalVotos(votos.spliterator().estimateSize());
+	}
+
+	public Apresentacao ativar(Long id) {
+
+		Apresentacao apresentacao = apresentacaoRepository.findOne(id);
+		apresentacao.setStatus(StatusApresentacao.ATIVA);
+		
+		apresentacao = apresentacaoRepository.save(apresentacao);
+		setVotosDaApresentacao(apresentacao);
+		
+		return apresentacao;
+	}
+
+	public Apresentacao inativar(Long id) {
+		
+		Apresentacao apresentacao = apresentacaoRepository.findOne(id);
+		
+		apresentacao.setStatus(StatusApresentacao.INATIVA);
+		
+		apresentacao = apresentacaoRepository.save(apresentacao);
+		setVotosDaApresentacao(apresentacao);
+				
+		return apresentacao;
 	}
 
 }
