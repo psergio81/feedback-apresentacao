@@ -76,6 +76,9 @@ public class Apresentacao {
 		this.status = status;
 	}
 
+	public boolean isAtiva() {
+		return StatusApresentacao.ATIVA.equals(status);
+	}
 	
 
 }

@@ -16,28 +16,40 @@
 
 package br.com.stdio.feedback;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import br.com.stdio.feedback.service.ApresentacaoService;
 
 @Controller
 @SpringBootApplication
-@RequestMapping()
+@RequestMapping
 public class Main {
+	
+	@Autowired
+	private ApresentacaoService apresentacaoService;
 
-  public static void main(String[] args) throws Exception {
-    SpringApplication.run(Main.class, args);
+	public static void main(String[] args) throws Exception {
+		SpringApplication.run(Main.class, args);
+	}
+
+	@RequestMapping({"/avaliacoes", ""})
+	public ModelAndView pesquisa() {
+	  
+	  ModelAndView mv = new ModelAndView("PesquisaAvaliacao");
+	  mv.addObject("todasApresentacoes", apresentacaoService.findAll());
+	  
+	  
+    return mv;
   }
 
-  @RequestMapping({"/avaliacoes", ""})
-  public String pesquisa() {
-    return "PesquisaAvaliacao";
-  }
-  
-  @RequestMapping("/avaliacoes/nova")
-  public String nova() {
-	  return "CadastroAvaliacao";
-  }
+	@RequestMapping("/avaliacoes/nova")
+	public String nova() {
+		return "CadastroAvaliacao";
+	}
 
 }
