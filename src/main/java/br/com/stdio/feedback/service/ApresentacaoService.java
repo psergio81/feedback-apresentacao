@@ -19,6 +19,8 @@ public class ApresentacaoService {
 
 	public Apresentacao inserir(Apresentacao apresentacao) {
 
+		apresentacao.setStatus(StatusApresentacao.ATIVA);
+		
 		return apresentacaoRepository.save(apresentacao);
 	}
 

@@ -15,12 +15,12 @@ import br.com.stdio.feedback.service.ApresentacaoService;
 
 @RestController
 @RequestMapping("api/apresentacoes")
-public class ApresentacaoController {
+public class ApresentacaoApiController {
 
 	private ApresentacaoService apresentacaoService;
 
 	@Autowired
-	public ApresentacaoController(ApresentacaoService apresentacaoService) {
+	public ApresentacaoApiController(ApresentacaoService apresentacaoService) {
 		super();
 		this.apresentacaoService = apresentacaoService;
 	}

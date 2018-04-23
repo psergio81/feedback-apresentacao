@@ -10,37 +10,47 @@
 	
 <section layout:fragment="conteudo">
 	
-	<form class="form-horizontal" method="POST" action="/avaliacoes" >
+	<form class="form-horizontal" method="POST" action="/apresentacoes" th:object="${apresentacao}">
 		
+		<div class="alert alert-danger" th:if="${#fields.hasAnyErrors()}">
+			
+			<div th:each="detailedError : ${#fields.detailedErrors()}">
+				<span th:text="${detailedError.message}"></span>
+			</div>
+			
+		</div>
 		
+		<div class="alert alert-success" role="alert" th:if="${!#strings.isEmpty(mensagem)}">
+			<span th:text="${mensagem}">Apresentação salva com sucesso!</span>
+		</div>
 		
 		<div class="panel panel-default">
 	  		<div class="panel-heading">
 	  			<div class="clearfix">
 		    		<h1 class="panel-title aw-titulo-panel">Nova Apresentação</h1>
-		    		<a class="btn btn-link aw-link-panel" href="/avaliacoes">Busca de Apresentações</a>
+		    		<a class="btn btn-link aw-link-panel" href="/apresentacoes">Busca de Apresentações</a>
 	  			</div>
 			</div>
 
 	  		<div class="panel-body">
 				<div class="form-group">
 					<label for="descricao" class="col-sm-2 control-label">Título</label>
-					<div class="col-sm-2">
-						<input class="form-control" id="descricao" name="descricao" />
+					<div class="col-sm-4">
+						<input class="form-control" name="titulo" />
 					</div>
 				</div>
 
 				<div class="form-group">
 					<label for="descricao" class="col-sm-2 control-label">Descrição</label>
-					<div class="col-sm-2">
-						<input class="form-control" id="descricao" name="descricao" />
+					<div class="col-sm-4">
+						<textarea class="form-control" name="descricao" rows="5" cols="20"></textarea>
 					</div>
 				</div>
 
 				<div class="form-group">
-					<label for="descricao" class="col-sm-2 control-label">Talker</label>
-					<div class="col-sm-2">
-						<input class="form-control" id="descricao" name="descricao" />
+					<label for="descricao" class="col-sm-2 control-label">Apresentador</label>
+					<div class="col-sm-4">
+						<input class="form-control" name="apresentador" />
 					</div>
 				</div>
 
@@ -50,12 +60,8 @@
 						<button type="submit" class="btn btn-primary">Salvar</button>
 					</div>
 				</div>
-				
 	  		</div>
-
 		</div>
-		
-		
 	</form>
 	
 </section>
