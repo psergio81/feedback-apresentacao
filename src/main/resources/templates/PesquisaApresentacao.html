@@ -44,7 +44,14 @@
 								th:classappend="*{ativa ? 'label-success' :  'label-danger'}" >
 							</span>
 						</td>
-						<td></td>
+						<td>
+							<a th:href="@{/apresentacoes/{codigo}(codigo=*{id})}" >
+								Alterar
+							</a>
+							<a href="#">
+								Excluir
+							</a>
+						</td>
 					</tr>
 
 					<tr th:if="${#lists.isEmpty(todasApresentacoes)}">

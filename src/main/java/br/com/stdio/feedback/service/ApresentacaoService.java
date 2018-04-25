@@ -43,7 +43,7 @@ public class ApresentacaoService {
 
 	public Apresentacao ativar(Long id) {
 
-		Apresentacao apresentacao = apresentacaoRepository.findOne(id);
+		Apresentacao apresentacao = findOne(id);
 		apresentacao.setStatus(StatusApresentacao.ATIVA);
 		
 		apresentacao = apresentacaoRepository.save(apresentacao);
@@ -52,9 +52,13 @@ public class ApresentacaoService {
 		return apresentacao;
 	}
 
+	public Apresentacao findOne(Long id) {
+		return apresentacaoRepository.findOne(id);
+	}
+
 	public Apresentacao inativar(Long id) {
 		
-		Apresentacao apresentacao = apresentacaoRepository.findOne(id);
+		Apresentacao apresentacao = findOne(id);
 		
 		apresentacao.setStatus(StatusApresentacao.INATIVA);
 		
