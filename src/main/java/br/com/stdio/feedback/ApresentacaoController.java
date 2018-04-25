@@ -62,5 +62,15 @@ public class ApresentacaoController {
 		
 		return mv;
 	}
+	
+	@RequestMapping(value = "{codigo}", method = RequestMethod.DELETE)
+	public String excluir(@PathVariable Long codigo, RedirectAttributes attributes) {
+		
+		apresentacaoService.excluir(codigo);
+		
+		attributes.addFlashAttribute("mensagem", "Apresentação excluída com sucesso!");
+		
+		return "redirect:/apresentacoes";
+	}
 
 }

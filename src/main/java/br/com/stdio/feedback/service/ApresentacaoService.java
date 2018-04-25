@@ -68,4 +68,10 @@ public class ApresentacaoService {
 		return apresentacao;
 	}
 
+	public void excluir(Long codigo) {
+
+		apresentacaoRepository.delete(codigo);
+		
+	}
+
 }
