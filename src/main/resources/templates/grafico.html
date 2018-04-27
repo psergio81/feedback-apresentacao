@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="LayoutPadrao"
+	>
+<head>
+	<title>Gráfico</title>
+	
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	
+	<script type="text/javascript">
+	
+		google.charts.load('current', {'packages':['corechart']});
+		google.charts.setOnLoadCallback(drawChart);
+	
+		function drawChart() {
+			
+			var jsonData = $.ajax({
+		          url: "/api/apresentacoes",
+		          dataType: "json",
+		          async: false
+		          }).responseText;
+			
+		  var data = new google.visualization.DataTable();
+		  data.addColumn('string', 'Apresentação');
+          data.addColumn('number', 'Votos');
+	
+	      $.each(JSON.parse(jsonData), function(i, json){
+	    	  data.addRow([json.titulo, json.totalVotos]);
+	      });
+	      
+		  var options = {
+		    title: 'Votação'
+		  };
+	
+		  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+	
+		  chart.draw(data, options);
+		}
+	
+	</script>
+	
+</head>
+	
+<section layout:fragment="conteudo">
+	
+	<div class="panel panel-default">
+  		<div class="panel-heading">
+  			<div class="clearfix">
+	    		<h1 class="panel-title aw-titulo-panel">Gráfico</h1>
+	    		<a class="btn btn-link aw-link-panel" href="/apresentacoes">Busca de Apresentações</a>
+  			</div>
+		</div>
+
+  		<div class="panel-body">
+  			
+  			Grafico
+  			<div id="piechart" style="width: 900px; height: 500px;"></div>
+  			
+  		</div>
+	</div>
+	
+</section>
+
+<script type="text/javascript">
+	
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+
+  var data = google.visualization.arrayToDataTable([
+    ['Task', 'Hours per Day'],
+    ['Work',     11],
+    ['Eat',      2],
+    ['Commute',  2],
+    ['Watch TV', 2],
+    ['Sleep',    7]
+  ]);
+
+  var options = {
+    title: 'My Daily Activities'
+  };
+
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+  chart.draw(data, options);
+}
+	
+
+	
+
+</script>
+
+
+</html>

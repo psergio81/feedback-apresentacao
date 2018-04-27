@@ -72,5 +72,14 @@ public class ApresentacaoController {
 		
 		return "redirect:/apresentacoes";
 	}
+	
+	@RequestMapping("/grafico")
+	public ModelAndView grafico() {
+
+		ModelAndView mv = new ModelAndView("grafico");
+		
+		
+		return mv;
+	}
 
 }
