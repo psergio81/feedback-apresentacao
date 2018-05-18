@@ -1,1 +1,2 @@
-web: java -jar target/feedback-apresentacao-1.0.jar
+web: java $JAVA_OPTS -Dserver.port=$PORT -jar target/*.jar
+--spring.config.location=classpath:heroku-db.properties
