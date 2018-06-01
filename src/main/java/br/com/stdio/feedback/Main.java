@@ -18,14 +18,18 @@ package br.com.stdio.feedback;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.stereotype.Controller;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-@Controller
 @SpringBootApplication
 public class Main {
 
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(Main.class, args);
+		
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String encode = encoder.encode("123");
+		
+		System.out.println(">>>>>>>>>>>> "+encode);
 	}
 
 }

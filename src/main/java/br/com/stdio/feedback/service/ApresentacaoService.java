@@ -1,5 +1,7 @@
 package br.com.stdio.feedback.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -53,7 +55,10 @@ public class ApresentacaoService {
 	}
 
 	public Apresentacao findOne(Long id) {
-		return apresentacaoRepository.findOne(id);
+		
+		Optional<Apresentacao> optional = apresentacaoRepository.findById(id);
+		
+		return optional.get();
 	}
 
 	public Apresentacao inativar(Long id) {
@@ -70,7 +75,7 @@ public class ApresentacaoService {
 
 	public void excluir(Long codigo) {
 
-		apresentacaoRepository.delete(codigo);
+		apresentacaoRepository.deleteById(codigo);
 		
 	}
 

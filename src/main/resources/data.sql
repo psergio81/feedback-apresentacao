@@ -4,3 +4,6 @@ INSERT INTO Apresentacao (titulo, descricao, apresentador, status) VALUES ('Java
 INSERT INTO Apresentacao (titulo, descricao, apresentador, status) VALUES ('Semântica e acessibilidade', 'O trecho padrão original de Lorem Ipsum, usado desde o século XVI, está reproduzido abaixo para os interessados. Seções 1.10.32 e 1.10.33 de de Finibus Bonorum et Malorum de Cicero também foram reproduzidas abaixo em sua forma exata original, acompanhada das versões para o inglês da tradução feita por H. Rackham em 1914.', 'Géssica', 'ATIVA');
 INSERT INTO Apresentacao (titulo, descricao, apresentador, status) VALUES ('AWS e seus benefícios', 'Ele usa um dicionário com mais de 200 palavras em Latim combinado com um punhado de modelos de estrutura de frases para gerar um Lorem Ipsum com aparência razoável, livre de repetições, inserções de humor, palavras não características, etc.', 'Caio', 'ATIVA');
 INSERT INTO Apresentacao (titulo, descricao, apresentador, status) VALUES ('Indicadores comerciais', 'Muitos softwares de publicação e editores de páginas na internet agora usam Lorem Ipsum como texto-modelo padrão, e uma rápida busca por lorem ipsum mostra vários websites ainda em sua fase de construção.', 'Gustavo', 'ATIVA');
+
+
+INSERT INTO Usuario (nome, email, senha) VALUES ('paulo', 'paulo@teste.com.br', '$2a$10$oY5G1kQOWApR8fb1xr22Mee3lyy8Xey3AI74baqcMkfLLKrm4U03K')
